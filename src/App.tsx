@@ -1,7 +1,7 @@
-import logo from "./logo.svg";
-import "./App.css";
+import "./App.scss";
 
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
+import Layout from "@/layouts/index";
 
 import Index from "@/pages/index";
 
@@ -12,7 +12,11 @@ function App() {
         <Route path="/a">
           <Index></Index>
         </Route>
-        <Route path="/">12334565465</Route>
+        <Route path="/">
+        <Layout>
+          123456
+        </Layout>
+        </Route>
       </Switch>
     </div>
   );
