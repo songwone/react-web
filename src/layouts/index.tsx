@@ -1,22 +1,51 @@
-import { Divider, Layout, Menu } from "antd";
-import { Button, Descriptions, Result, Avatar, Space, Statistic } from "antd";
-import ProLayout, {
-  PageContainer,
-  SettingDrawer,
-} from "@ant-design/pro-layout";
-import { LikeOutlined, UserOutlined } from "@ant-design/icons";
+import { Button, Avatar, Divider } from "antd";
+import ProLayout, { PageContainer } from "@ant-design/pro-layout";
+import { UserOutlined } from "@ant-design/icons";
 import { useState } from "react";
 
-const { SubMenu } = Menu;
-const { Header, Content, Sider } = Layout;
+const menuData = [
+  {
+    path: "/",
+    name: "welcome",
+    children: [
+      {
+        path: "/welcome",
+        name: "one",
+        children: [
+          {
+            path: "/welcome/welcome",
+            name: "two",
+            exact: true,
+          },
+        ],
+      },
+    ],
+  },
+  {
+    path: "/system",
+    name: "系统管理",
+    children: [
+      {
+        path: "user-manage",
+        name: "用户管理"
+      },
+      {
+        path: "role-manage",
+        name: "角色管理"
+      },
+    ],
+  },
+];
 
 const LayoutComponent = (props: any) => {
-  const [pathname, setPathname] = useState("/welcome");
   return (
     <div style={{ height: "100vh" }}>
       <ProLayout
-        location={{
-          pathname,
+        menu={{
+          request: async () => {
+            await setTimeout(() => {}, 1500);
+            return menuData;
+          },
         }}
         waterMarkProps={{
           content: "Pro Layout",
@@ -50,57 +79,13 @@ const LayoutComponent = (props: any) => {
           );
         }}
         onMenuHeaderClick={(e) => console.log(e)}
-        menuItemRender={(item, dom) => (
-          <a
-            onClick={() => {
-              setPathname(item.path || "/welcome");
-            }}
-          >
-            {dom}
-          </a>
-        )}
         rightContentRender={() => (
           <div>
             <Avatar shape="square" size="small" icon={<UserOutlined />} />
           </div>
         )}
       >
-        <PageContainer
-          content={<div>123</div>}
-          tabList={[
-            {
-              tab: "基本信息",
-              key: "base",
-            },
-            {
-              tab: "详细信息",
-              key: "info",
-            },
-          ]}
-          extraContent={
-            <Space size={24}>
-              <Statistic
-                title="Feedback"
-                value={1128}
-                prefix={<LikeOutlined />}
-              />
-              <Statistic title="Unmerged" value={93} suffix="/ 100" />
-            </Space>
-          }
-          extra={[
-            <Button key="3">操作</Button>,
-            <Button key="2">操作</Button>,
-            <Button key="1" type="primary">
-              主操作
-            </Button>,
-          ]}
-          footer={[
-            <Button key="3">重置</Button>,
-            <Button key="2" type="primary">
-              提交
-            </Button>,
-          ]}
-        ></PageContainer>
+        <PageContainer title={<div></div>}>{props.children}</PageContainer>
       </ProLayout>
     </div>
   );

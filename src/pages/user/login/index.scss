@@ -1,0 +1,16 @@
+.login-wrap{
+  position: fixed;
+  width: 450px;
+  height: 320px;
+  padding: 20px 30px;
+  left: 50%;
+  top: 50%;
+  margin-left: -225px;
+  margin-top: -160px;
+  box-shadow: rgba($color: #000000, $alpha: 0.1) 0 0 5px;
+  .login-title{
+    font-size: 22px;
+    font-weight: bold;
+    line-height: 60px;
+  }
+}

@@ -1,8 +1,11 @@
+import { useSelector } from "react-redux";
+const Index = (props: any) => {
+  console.log(
+    "🚀 ~ file: index.tsx ~ line 3 ~ Index ~ props",
+    useSelector((state) => state)
+  );
 
-const Index = () => {
-    return <div>
-        index
-    </div>
-}
+  return <div>index123</div>;
+};
 
-export default Index
+export default Index;
