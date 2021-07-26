@@ -1,3 +1,11 @@
+/*
+ * @Descripttion: 
+ * @version: 
+ * @Author: songone
+ * @Date: 2021-07-15 08:48:28
+ * @LastEditors: songone
+ * @LastEditTime: 2021-07-26 17:37:40
+ */
 import "./index.scss";
 
 import { Form, Input, Button } from "antd";
@@ -5,11 +13,16 @@ import { Form, Input, Button } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 
 const Login = () => {
+
+  const handleLogin = () => {
+
+  }
+
   return (
     <div>
       <div className="login-wrap">
         <h2 className="login-title">License系统登录</h2>
-        <Form size="large">
+        <Form size="large" onFinish={handleLogin}>
           <Form.Item>
             <Input prefix={<UserOutlined></UserOutlined>} placeholder="账号"></Input>
           </Form.Item>

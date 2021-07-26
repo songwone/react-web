@@ -1,3 +1,11 @@
+/*
+ * @Descripttion:
+ * @version:
+ * @Author: songone
+ * @Date: 2021-07-15 08:48:28
+ * @LastEditors: songone
+ * @LastEditTime: 2021-07-26 17:37:06
+ */
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
@@ -5,15 +13,13 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Provider } from "react-redux";
 
-import store from '@/store'
+import store from "@/store";
 
 ReactDOM.render(
   <Provider store={store}>
-    <React.StrictMode>
-      <Router>
-        <App />
-      </Router>
-    </React.StrictMode>
+    <Router>
+      <App />
+    </Router>
   </Provider>,
   document.getElementById("root")
 );

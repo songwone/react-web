@@ -1,12 +1,22 @@
-import { Button, Avatar, Divider } from "antd";
+/*
+ * @Descripttion:
+ * @version:
+ * @Author: songone
+ * @Date: 2021-07-19 11:28:08
+ * @LastEditors: songone
+ * @LastEditTime: 2021-07-26 14:35:51
+ */
 import ProLayout, { PageContainer } from "@ant-design/pro-layout";
 import { UserOutlined } from "@ant-design/icons";
-import { useState } from "react";
+
+import { MenuDataItem } from "@ant-design/pro-layout";
+import { Link } from "react-router-dom";
+import { Avatar, Menu, Dropdown } from "antd";
 
 const menuData = [
   {
     path: "/",
-    name: "welcome",
+    name: "123",
     children: [
       {
         path: "/welcome",
@@ -27,20 +37,28 @@ const menuData = [
     children: [
       {
         path: "user-manage",
-        name: "用户管理"
+        name: "用户管理",
       },
       {
         path: "role-manage",
-        name: "角色管理"
+        name: "角色管理",
       },
     ],
   },
 ];
 
+const AvatarMenu = (
+  <Menu>
+    <Menu.Item key="center">个人中心</Menu.Item>
+    <Menu.Item key="logout">退出登录</Menu.Item>
+  </Menu>
+);
+
 const LayoutComponent = (props: any) => {
   return (
     <div style={{ height: "100vh" }}>
       <ProLayout
+        title="人和未来License"
         menu={{
           request: async () => {
             await setTimeout(() => {}, 1500);
@@ -49,6 +67,9 @@ const LayoutComponent = (props: any) => {
         }}
         waterMarkProps={{
           content: "Pro Layout",
+        }}
+        menuItemRender={(item: MenuDataItem) => {
+          return <Link to={item.path || "/"}>{item.name}</Link>;
         }}
         menuFooterRender={(props) => {
           return (
@@ -81,7 +102,9 @@ const LayoutComponent = (props: any) => {
         onMenuHeaderClick={(e) => console.log(e)}
         rightContentRender={() => (
           <div>
-            <Avatar shape="square" size="small" icon={<UserOutlined />} />
+            <Dropdown overlay={AvatarMenu}>
+              <Avatar shape="square" size="small" icon={<UserOutlined />} />
+            </Dropdown>
           </div>
         )}
       >

@@ -1,3 +1,11 @@
+/*
+ * @Descripttion: 
+ * @version: 
+ * @Author: songone
+ * @Date: 2021-07-15 08:48:28
+ * @LastEditors: songone
+ * @LastEditTime: 2021-07-26 16:36:03
+ */
 import "./App.scss";
 
 import { Switch, Route, useRouteMatch } from "react-router-dom";
@@ -26,7 +34,7 @@ function App() {
               <Route path={`${path}111`}>
                 <div>11111111111</div>
               </Route>
-              <Route exact path={`${path}`}>
+              <Route exact path={`/`}>
                 <Index></Index>
               </Route>
             </Switch>
