@@ -4,7 +4,7 @@
  * @Author: songone
  * @Date: 2021-07-15 08:48:28
  * @LastEditors: songone
- * @LastEditTime: 2021-07-26 16:36:03
+ * @LastEditTime: 2021-07-28 15:44:45
  */
 import "./App.scss";
 
@@ -15,6 +15,7 @@ import Index from "@/pages/index";
 import LoginPage from "@/pages/user/login";
 
 import UserManagePage from "@/pages/system/userManage";
+import SourcesManagePage from "./pages/system/sourcesManage";
 
 function App() {
   let { path } = useRouteMatch();
@@ -31,8 +32,8 @@ function App() {
               <Route path={`${path}system/user-manage`}>
                 <UserManagePage></UserManagePage>
               </Route>
-              <Route path={`${path}111`}>
-                <div>11111111111</div>
+              <Route path={`${path}system/sources-manage`}>
+              <SourcesManagePage></SourcesManagePage>
               </Route>
               <Route exact path={`/`}>
                 <Index></Index>

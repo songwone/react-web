@@ -16,3 +16,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.filter-container{
+  margin-bottom: 10px;
+}
+.card-container{
+  background-color: #ffffff;
+  box-shadow: rgba($color: #000000, $alpha: 0.1) 0 0 5px;
+  padding: 20px;
+}
