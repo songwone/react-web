@@ -4,14 +4,14 @@
  * @Author: songone
  * @Date: 2021-07-26 16:03:14
  * @LastEditors: songone
- * @LastEditTime: 2021-07-28 14:42:29
+ * @LastEditTime: 2021-08-17 13:55:12
  */
 import axios from 'axios'
 import { message } from 'antd'
 import { getToken } from '@/utils/auth'
 
 axios.defaults.timeout = 30000;
-axios.defaults.baseURL = '/localapi';
+axios.defaults.baseURL = process.env.NODE_ENV === 'development' ? '/' : '/';
 
 axios.interceptors.request.use(
   (config) => {

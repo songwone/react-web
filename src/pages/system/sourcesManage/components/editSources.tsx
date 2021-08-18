@@ -4,12 +4,17 @@
  * @Author: songone
  * @Date: 2021-07-29 14:15:08
  * @LastEditors: songone
- * @LastEditTime: 2021-07-30 14:39:01
+ * @LastEditTime: 2021-08-16 20:25:22
  */
 import { Form, Modal, Input, Radio, Divider, Select } from "antd";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-import { addResource, editResource, IResource, IResourceForm  } from "@/api/system";
+import {
+  addResource,
+  editResource,
+  IResource,
+  IResourceForm,
+} from "@/api/system";
 
 interface propsType {
   visible: boolean | undefined;
@@ -19,24 +24,39 @@ interface propsType {
   parentId?: number;
 }
 const EditSources = (props: propsType) => {
+  const { detail } = props;
   const [type, setType] = useState(1);
   const [form] = Form.useForm();
 
   const handleSubmit = async (values: IResourceForm) => {
-    if(props.detail) {
-      await editResource(values)
-    }else{
-      await addResource(values)
+    if (props.detail) {
+      await editResource(values);
+    } else {
+      await addResource(values);
     }
-  }
+  };
+  useEffect(() => {
+    if (detail) {
+      form.setFieldsValue(detail);
+    } else {
+      form.resetFields();
+    }
+  }, [detail, form]);
 
   return (
-    <Modal visible={props.visible} onOk={() => { form.submit() }} onCancel={props.onCancel}  title="编辑资源">
+    <Modal
+      visible={props.visible}
+      onOk={() => {
+        form.submit();
+      }}
+      onCancel={props.onCancel}
+      title="编辑资源"
+    >
       <Form form={form} onFinish={handleSubmit}>
-        <Form.Item label="名称">
+        <Form.Item label="名称" name="name">
           <Input></Input>
         </Form.Item>
-        <Form.Item label="描述">
+        <Form.Item label="描述" name="remark">
           <Input.TextArea></Input.TextArea>
         </Form.Item>
         <Form.Item label="类型">
@@ -60,19 +80,19 @@ const EditSources = (props: propsType) => {
             </Radio>
           </Radio.Group>
         </Form.Item>
-        <Form.Item label="父节点">
+        <Form.Item label="父节点" name="parent">
           <Input></Input>
         </Form.Item>
-        <Form.Item label="排序">
+        <Form.Item label="排序" name="order_num">
           <Input></Input>
         </Form.Item>
         <Divider></Divider>
         {type === 1 && (
           <>
-            <Form.Item label="路由路径">
+            <Form.Item label="路由路径" name="path">
               <Input></Input>
             </Form.Item>
-            <Form.Item label="显示名称">
+            <Form.Item label="显示名称" name="title">
               <Input></Input>
             </Form.Item>
             <Form.Item label="路由图标">

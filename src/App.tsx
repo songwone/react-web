@@ -4,14 +4,14 @@
  * @Author: songone
  * @Date: 2021-07-15 08:48:28
  * @LastEditors: songone
- * @LastEditTime: 2021-07-28 15:44:45
+ * @LastEditTime: 2021-08-17 14:06:38
  */
 import "./App.scss";
 
 import { Switch, Route, useRouteMatch } from "react-router-dom";
 import Layout from "@/layouts/index";
 
-import Index from "@/pages/index";
+import Index from "@/pages/index/index";
 import LoginPage from "@/pages/user/login";
 
 import UserManagePage from "@/pages/system/userManage";

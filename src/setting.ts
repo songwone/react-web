@@ -4,7 +4,7 @@
  * @Author: songone
  * @Date: 2021-07-30 15:56:27
  * @LastEditors: songone
- * @LastEditTime: 2021-07-30 16:20:53
+ * @LastEditTime: 2021-08-17 13:57:01
  */
 interface ISettings {
   title: string // Overrides the default title
@@ -28,7 +28,7 @@ const settings: ISettings = {
   errorLog: ['production'],
   sidebarTextTheme: false,
   devServerPort: 9527,
-  systemId: 3
+  systemId: 1
 }
 
 export default settings

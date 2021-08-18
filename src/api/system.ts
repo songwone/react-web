@@ -4,7 +4,7 @@
  * @Author: songone
  * @Date: 2021-07-30 14:20:06
  * @LastEditors: songone
- * @LastEditTime: 2021-07-30 15:50:04
+ * @LastEditTime: 2021-08-18 10:13:28
  */
 import request from '@/utils/request'
 
@@ -62,3 +62,4 @@ export const editResource = (obj: IResourceForm) => {
 export const addResource = (obj: IResourceForm) => {
   return request.post('/base/resource/', obj)
 }
+
